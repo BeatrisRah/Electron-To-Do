@@ -1,6 +1,10 @@
 {
     "appId":"com.b-rahimi.electron-to-do",
-    "files":["src/electron/main.js", "dist-react", "package.json", "node_modules/**/*"],
+    "files":[
+    "./src/electron/*", 
+    "dist-react", "package.json", 
+    "node_modules/**/*"],
+    "extraResources": ["./src/electron/preload.cjs"],
     "icon":"./desktop_icon.png",
     "mac": {
         "target": "dmg"

@@ -6,6 +6,6 @@ export function getPreloadPath(){
     return path.join(
         app.getAppPath(),
         isDev() ? '.' : '..',
-        '/src/electron/preload.cjs'
+        './src/electron/preload.cjs'
     )
 }
