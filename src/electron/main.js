@@ -19,7 +19,7 @@ app.on('ready', () => {
     }
     
 
-    ipcMain.handle('get-tasks', (event) => {
+    ipcMain.handle('get:tasks', (event) => {
         return store.get('tasks') || []
     })
 })

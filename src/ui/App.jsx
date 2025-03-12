@@ -16,11 +16,11 @@ function App() {
       } catch(err){
         console.log(err);
         
-      }
-     
-    }
- 
+      }}
+    // window.addEventListener('load', getFn)
     getFn()
+
+    return() => window.removeEventListener('load', getFn)
   }, [])
 
   function handleChange(e){
@@ -33,6 +33,8 @@ function App() {
     setTasks(t => [...t, newTask])
     setValue('')
   }
+
+
   return (
     <>
   <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
