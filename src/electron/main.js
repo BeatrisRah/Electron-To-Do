@@ -22,4 +22,11 @@ app.on('ready', () => {
     ipcMain.handle('get:tasks', (event) => {
         return store.get('tasks') || []
     })
+
+    ipcMain.handle('task:add', (event, newTaskData) => {
+        const tasks = store.get('tasks') || []
+        tasks.push(newTaskData)
+        store.set('tasks', tasks)
+        return tasks;
+    })
 })

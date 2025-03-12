@@ -27,10 +27,12 @@ function App() {
     setValue(e.currentTarget.value)
   }
 
-  function createTask(){
+  async function createTask(){
     const id = uuid()
     const newTask = {id, text:value}
-    setTasks(t => [...t, newTask])
+    const newTasks = await window.electron.createTask(newTask)
+
+    setTasks(newTasks)
     setValue('')
   }
 
