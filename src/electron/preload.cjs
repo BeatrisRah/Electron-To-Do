@@ -7,5 +7,9 @@ electron.contextBridge.exposeInMainWorld('electron', {
     createTask: async (newTaskData) =>{
         
         return await electron.ipcRenderer.invoke('task:add', newTaskData, )
+    },
+
+    deleteTask: async (taskID) => {
+        return await electron.ipcRenderer.invoke('task:delete', taskID)
     }
 })

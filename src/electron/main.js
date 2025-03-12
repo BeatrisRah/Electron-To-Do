@@ -6,6 +6,8 @@ import Store from 'electron-store'
 
 const store = new Store()
 
+let editWindow;
+
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
         webPreferences:{
@@ -28,5 +30,15 @@ app.on('ready', () => {
         tasks.push(newTaskData)
         store.set('tasks', tasks)
         return tasks;
+    })
+
+    ipcMain.handle('task:delete', (event, taskId) => {
+        const tasks = store.get('tasks') || []
+        const taskIndex = tasks.findIndex(el => el.id === taskId)
+        
+        tasks.splice(taskIndex, 1)
+        store.set('tasks',tasks)
+        return store.get('tasks');
+
     })
 })

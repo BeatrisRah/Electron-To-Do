@@ -1,6 +1,13 @@
-export default function TaskItem({data}) {
+export default function TaskItem({data, onDelete}) {
+    
+    
+    async function handleClick(id){
+        const newTasks = await window.electron.deleteTask(id);        
+        onDelete(newTasks)
+    }
+
     return (
-        <li className="py-4">
+        <li className="py-4 flex justify-between">
             <div className="flex items-center">
                 <input
                     id="todo1"
@@ -12,6 +19,10 @@ export default function TaskItem({data}) {
                     <span className="text-lg font-medium">{data.text}</span>
                     
                 </label>
+                
+            </div>
+            <div className="inline-flex self-end rounded-md shadow-sm gap-1">
+                <button onClick={() => handleClick(data.id)} className="bg-red-500 text-white px-3 py-1 rounded-md text-xs md:text-sm">Delete</button>
             </div>
         </li>
     );

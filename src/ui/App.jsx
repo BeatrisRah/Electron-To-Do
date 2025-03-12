@@ -36,6 +36,10 @@ function App() {
     setValue('')
   }
 
+  function onDeleteTask(newTasks){
+    setTasks(newTasks)
+  }
+
 
   return (
     <>
@@ -62,7 +66,7 @@ function App() {
       </div>
     </form>
     <ul className="divide-y divide-gray-200 px-4">
-      {tasks.map(currentTask => <TaskItem key={currentTask.id} data={currentTask} />)}
+      {tasks.map(currentTask => <TaskItem key={currentTask.id} data={currentTask} onDelete={onDeleteTask} />)}
 
       
       
