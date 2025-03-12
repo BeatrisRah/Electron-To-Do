@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import TaskItem from './components/TaskItem'
 
@@ -7,6 +7,21 @@ import TaskItem from './components/TaskItem'
 function App() {
   const [tasks, setTasks] = useState([])
   const [value, setValue] = useState('')
+
+  useEffect(() => {
+    const getFn = async () => {
+      try{
+        const val = await window.electron.getTasks()
+        setTasks(val)
+      } catch(err){
+        console.log(err);
+        
+      }
+     
+    }
+ 
+    getFn()
+  }, [])
 
   function handleChange(e){
     setValue(e.currentTarget.value)

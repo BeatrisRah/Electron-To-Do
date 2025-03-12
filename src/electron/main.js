@@ -1,8 +1,10 @@
-import {app, BrowserWindow} from 'electron';
+import {app, BrowserWindow, ipcMain} from 'electron';
 import path from'path'
 import { isDev } from './utils.js';
 import { getPreloadPath } from './pathResolver.js';
+import Store from 'electron-store'
 
+const store = new Store()
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
@@ -16,4 +18,8 @@ app.on('ready', () => {
         mainWindow.loadFile(path.join(app.getAppPath() + '/dist-react/index.html'))
     }
     
+
+    ipcMain.handle('get-tasks', (event) => {
+        return store.get('tasks') || []
+    })
 })
