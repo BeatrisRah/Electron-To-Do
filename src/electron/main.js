@@ -2,8 +2,10 @@ import {app, BrowserWindow, ipcMain} from 'electron';
 import path from'path'
 import { isDev } from './utils.js';
 import { getPreloadPath } from './pathResolver.js';
+import fs from 'fs'
 
 
+const tasksFilePath = path.join(app.getAppPath() + 'src/data/tasks.json');
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
@@ -20,6 +22,16 @@ app.on('ready', () => {
 
     ipcMain.handle('get:tasks', (event) => {
         // return store.get('tasks') || []
+        try {
+            if (fs.existsSync(tasksFilePath)) {
+                const data = fs.readFileSync(tasksFilePath, 'utf-8');
+                return JSON.parse(data);
+            }
+            return [];
+        } catch (error) {
+            console.error('Error reading tasks file:', error);
+            return [];
+        }
     })
 
     ipcMain.handle('task:add', (event, newTaskData) => {

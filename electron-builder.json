@@ -3,7 +3,8 @@
     "files":[
     "./src/electron/*", 
     "dist-react", "package.json", 
-    "node_modules/**/*"],
+    "node_modules/**/*",
+    "./scr/data/*"],
     "extraResources": ["./src/electron/preload.cjs"],
     "icon":"./desktop_icon.png",
     "mac": {
