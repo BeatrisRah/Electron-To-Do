@@ -2,11 +2,8 @@ import {app, BrowserWindow, ipcMain} from 'electron';
 import path from'path'
 import { isDev } from './utils.js';
 import { getPreloadPath } from './pathResolver.js';
-import Store from 'electron-store'
 
-const store = new Store()
 
-let editWindow;
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
@@ -22,23 +19,25 @@ app.on('ready', () => {
     
 
     ipcMain.handle('get:tasks', (event) => {
-        return store.get('tasks') || []
+        // return store.get('tasks') || []
     })
 
     ipcMain.handle('task:add', (event, newTaskData) => {
-        const tasks = store.get('tasks') || []
-        tasks.push(newTaskData)
-        store.set('tasks', tasks)
-        return tasks;
+        // const tasks = store.get('tasks') || []
+        // tasks.push(newTaskData)
+        // store.set('tasks', tasks)
+        
+        // console.log(app.getAppPath());
+        // return tasks;
     })
 
     ipcMain.handle('task:delete', (event, taskId) => {
-        const tasks = store.get('tasks') || []
-        const taskIndex = tasks.findIndex(el => el.id === taskId)
+        // const tasks = store.get('tasks') || []
+        // const taskIndex = tasks.findIndex(el => el.id === taskId)
         
-        tasks.splice(taskIndex, 1)
-        store.set('tasks',tasks)
-        return store.get('tasks');
+        // tasks.splice(taskIndex, 1)
+        // store.set('tasks',tasks)
+        // return store.get('tasks');
 
     })
 })
