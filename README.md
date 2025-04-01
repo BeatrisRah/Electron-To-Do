@@ -1,12 +1,34 @@
-# React + Vite
+# Electron To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Electron app built with React. This project helped me understand how the bridge between the app (main process) and UI (renderer process) works.
 
-Currently, two official plugins are available:
+## Features
+✅ Electron + React UI <br>
+✅ Simple and lightweight <br>
+✅ [Mention what your app does briefly] <br>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run Locally
 
-## Expanding the ESLint configuration
+Clone the project
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+  git clone https://link-to-project .
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the app
+
+```bash
+  npm run dev
+```
+## Future Improvements
+
+- [ ] Persistend to-do data
+- [ ] macOS/Linux support (Planned) 
+
+Maybe package it for macOS/Linux? 🤔
